@@ -9,14 +9,14 @@
   <meta name="apple-mobile-web-app-title" content="MPS Control">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="style-v621.css">
+  <link rel="stylesheet" href="style-v63.css">
   <title>MPS Mission Control</title>
 </head>
 <body data-app-mode="PROD">
 
 <header class="header">
-  <img class="mpsBadgeLogo" src="mps-badge-v621.png" alt="MPS">
-  <div class="headerVersion">MPS OPERATING SYSTEM // PWA v6.2.1 // LIVE</div>
+  <img class="mpsBadgeLogo" src="mps-badge-v63.png" alt="MPS">
+  <div class="headerVersion">MPS OPERATING SYSTEM // PWA v6.3 // LIVE</div>
 </header>
 
 <main class="container">
@@ -309,7 +309,7 @@
   <!-- GARAGE -->
   <section class="screen" id="screen-garage">
     <div class="screenTitle">GARAGE</div>
-    <div class="screenSub">ISSUES // TYRES // PARTS // DOCUMENTS</div>
+    <div class="screenSub">ISSUES // TYRES // PARTS // DOCUMENTS // LICENCE</div>
 
     <div class="fullCard">
       <div class="sectionHead">
@@ -403,6 +403,25 @@
       </div>
       <button class="secondaryButton compactButton" data-open-modal="documentModal">＋ ADD DOCUMENT</button>
       <div id="documentsList" class="dataList emptyState">BRAK DANYCH</div>
+    </div>
+
+    <div class="fullCard licenceCard">
+      <div class="sectionHead">
+        <div class="label noMargin">DRIVING LICENCE</div>
+        <div class="tinyBadge" id="licenceBadge">—</div>
+      </div>
+      <div class="licenceGrid">
+        <div>
+          <div class="miniLabel">VALID UNTIL</div>
+          <div class="licenceDate" id="licenceExpiry">—</div>
+        </div>
+        <div class="right">
+          <div class="miniLabel">TIME LEFT</div>
+          <div class="licenceTime" id="licenceTimeLeft">—</div>
+        </div>
+      </div>
+      <div id="licenceNote" class="dataSub licenceNote"></div>
+      <button class="secondaryButton compactButton" data-open-modal="licenceModal">EDIT DRIVING LICENCE</button>
     </div>
   </section>
 
@@ -551,7 +570,7 @@
   <button id="toastUndo" hidden>UNDO</button>
 </div>
 
-<script src="app-v621.js"></script>
-<script src="i18n-v621.js"></script>
+<script src="app-v63.js"></script>
+<script src="i18n-v63.js"></script>
 </body>
 </html>

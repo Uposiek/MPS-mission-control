@@ -1,7 +1,7 @@
 {
   "name": "MPS Mission Control",
   "short_name": "MPS Control",
-  "description": "Mazda 3 MPS: misja, paliwo, serwis, Build Sheet remontu 2026, koszty i historia auta. Interfejs PL/EN.",
+  "description": "Mazda 3 MPS: misja, serwis, Build Sheet, dokumenty, prawo jazdy, koszty i historia auta. PL/EN.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
