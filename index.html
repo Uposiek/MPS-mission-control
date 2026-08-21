@@ -9,17 +9,94 @@
   <meta name="apple-mobile-web-app-title" content="MPS Control">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="style-v63.css">
+  <link rel="stylesheet" href="style-v70.css">
   <title>MPS Mission Control</title>
 </head>
 <body data-app-mode="PROD">
 
 <header class="header">
   <img class="mpsBadgeLogo" src="mps-badge-v63.png" alt="MPS">
-  <div class="headerVersion">MPS OPERATING SYSTEM // PWA v6.3 // LIVE</div>
+  <div class="headerVersion">MPS OPERATING SYSTEM // PWA v7.0 // LIVE</div>
 </header>
 
 <main class="container">
+
+  <!-- AUTO / VEHICLE -->
+  <section class="screen" id="screen-auto">
+    <div class="screenTitle">CAR CONTROL</div>
+    <div class="screenSub">VEHICLE // DOCUMENTS // CAR HEALTH</div>
+
+    <div class="fullCard healthCard">
+      <div class="sectionHead">
+        <div class="label noMargin">CAR HEALTH</div>
+        <div class="tinyBadge" id="healthBadge">STATUS</div>
+      </div>
+      <div class="healthGrid">
+        <div><span>ENGINE OIL</span><b id="healthOil">—</b><small id="healthOilSub">—</small></div>
+        <div><span>TYRE ROTATION</span><b id="healthTyres">—</b><small id="healthTyresSub">—</small></div>
+        <div><span>NEXT DOCUMENT</span><b id="healthDocument">—</b><small id="healthDocumentSub">—</small></div>
+        <div><span>OPEN ISSUES</span><b id="healthIssues">0</b><small id="healthIssuesSub">—</small></div>
+        <div><span>NEXT SERVICE</span><b id="healthService">—</b><small id="healthServiceSub">—</small></div>
+        <div><span>CURRENT ODO</span><b id="healthOdo">—</b><small>KM</small></div>
+      </div>
+    </div>
+
+    <div class="fullCard vehicleIdentityCard">
+      <div class="sectionHead">
+        <div class="label noMargin">VEHICLE DATA</div>
+        <div class="tinyBadge">IDENTITY</div>
+      </div>
+      <div class="vehicleDataGrid">
+        <div><span>MAKE / MODEL</span><b id="vehicleModel">—</b></div>
+        <div><span>YEAR</span><b id="vehicleYear">—</b></div>
+        <div class="wide"><span>VIN</span><b id="vehicleVin">—</b></div>
+        <div class="wide"><span>REGISTRATION</span><b id="vehicleRegistration">—</b></div>
+        <div><span>FIRST REGISTRATION</span><b id="vehicleFirstReg">—</b></div>
+        <div><span>PURCHASE DATE</span><b id="vehiclePurchaseDate">—</b></div>
+        <div class="wide"><span>PURCHASE ODO</span><b id="vehiclePurchaseOdo">—</b></div>
+      </div>
+      <div id="vehicleDataNote" class="dataSub topGapSmall"></div>
+      <button class="secondaryButton compactButton" data-open-modal="vehicleDataModal">EDIT VEHICLE DATA</button>
+    </div>
+
+
+    <div class="fullCard">
+      <div class="sectionHead">
+        <div class="label noMargin">DOCUMENTS</div>
+        <div class="tinyBadge" id="documentsBadge">0 ACTIVE</div>
+      </div>
+      <button class="secondaryButton compactButton" data-open-modal="documentModal">＋ ADD DOCUMENT</button>
+      <div id="documentsList" class="dataList emptyState">BRAK DANYCH</div>
+    </div>
+
+    <div class="fullCard licenceCard">
+      <div class="sectionHead">
+        <div class="label noMargin">DRIVING LICENCE</div>
+        <div class="tinyBadge" id="licenceBadge">—</div>
+      </div>
+      <div class="licenceGrid">
+        <div>
+          <div class="miniLabel">VALID UNTIL</div>
+          <div class="licenceDate" id="licenceExpiry">—</div>
+        </div>
+        <div class="right">
+          <div class="miniLabel">TIME LEFT</div>
+          <div class="licenceTime" id="licenceTimeLeft">—</div>
+        </div>
+      </div>
+      <div id="licenceNote" class="dataSub licenceNote"></div>
+      <button class="secondaryButton compactButton" data-open-modal="licenceModal">EDIT DRIVING LICENCE</button>
+    </div>
+
+    <div class="fullCard missionArchiveCard">
+      <div class="sectionHead">
+        <div class="label noMargin">MISSION ARCHIVE</div>
+        <div class="tinyBadge" id="missionArchiveBadge">ACTIVE</div>
+      </div>
+      <div class="archiveSummary" id="missionArchiveSummary">Rebuild countdown is still active.</div>
+      <button class="secondaryButton compactButton" id="openMissionArchiveBtn">OPEN MISSION CONTROL</button>
+    </div>
+  </section>
 
   <!-- MISSION -->
   <section class="screen active" id="screen-mission">
@@ -121,6 +198,8 @@
     </div>
 
     <button class="primaryButton successButton" id="completeMissionBtn">😎 MAM MAZDĘ // START OPERATIONS</button>
+    <button class="secondaryButton" id="openAutoFromMissionBtn">AUTO // DOCUMENTS</button>
+    <button class="secondaryButton" id="backToAutoBtn" hidden>← BACK TO AUTO</button>
   </section>
 
   <!-- DRIVE -->
@@ -230,7 +309,7 @@
   <!-- SERVICE -->
   <section class="screen" id="screen-service">
     <div class="screenTitle">SERVICE CONTROL</div>
-    <div class="screenSub">OIL // MAINTENANCE // UPCOMING // OIL TOP-UPS</div>
+    <div class="screenSub">OIL // TYRES // MAINTENANCE // UPCOMING</div>
 
     <div class="fullCard oilCard">
       <div class="sectionHead">
@@ -280,6 +359,53 @@
       <div id="oilTopupList" class="dataList topGapSmall"></div>
     </div>
 
+    <div class="fullCard tyreManagerCard">
+      <div class="sectionHead">
+        <div class="label noMargin">TYRES // FRONT ↔ REAR</div>
+        <div class="tinyBadge" id="activeTyreBadge">NO ACTIVE SET</div>
+      </div>
+
+      <div id="activeTyrePanel" class="tyreActivePanel">
+        <div class="tyreStatsGrid">
+          <div><span>TOTAL SET MILEAGE</span><b id="tyreTotalKm">—</b><small>KM</small></div>
+          <div><span>SINCE ROTATION</span><b id="tyreRotationKm">—</b><small>KM</small></div>
+          <div><span>TO ROTATION</span><b id="tyreRotationLeft">—</b><small>KM</small></div>
+          <div><span>EST. ROTATION</span><b id="tyreRotationForecast">—</b><small id="tyreRotationForecastSub">—</small></div>
+        </div>
+        <div class="miniProgressOuter thick"><div class="miniProgressInner" id="tyreRotationBar"></div></div>
+        <div class="axleGrid">
+          <div class="axleCard">
+            <div class="axleTitle">FRONT</div>
+            <div class="axlePair" id="tyreFrontPair">PAIR A</div>
+            <div class="axleTread" id="tyreFrontTread">—</div>
+            <div class="axleSub">TREAD</div>
+          </div>
+          <div class="axleSwap">↕</div>
+          <div class="axleCard">
+            <div class="axleTitle">REAR</div>
+            <div class="axlePair" id="tyreRearPair">PAIR B</div>
+            <div class="axleTread" id="tyreRearTread">—</div>
+            <div class="axleSub">TREAD</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="primaryButton" id="rotateTyresBtn">↕ ROTATE FRONT ↔ REAR</button>
+      <button class="secondaryButton" data-open-modal="tyreModal">＋ ADD TYRE SET</button>
+
+      <div class="sectionHead topGap">
+        <div class="label noMargin">TYRE SETS</div>
+        <div class="tinyBadge">EDIT / SWITCH</div>
+      </div>
+      <div id="tyreList" class="dataList emptyState">BRAK DANYCH</div>
+
+      <div class="sectionHead topGap">
+        <div class="label noMargin">ROTATION HISTORY</div>
+        <div class="tinyBadge" id="tyreRotationHistoryBadge">0 EVENTS</div>
+      </div>
+      <div id="tyreRotationHistory" class="dataList emptyState">BRAK DANYCH</div>
+    </div>
+
     <div class="fullCard">
       <div class="sectionHead">
         <div class="label noMargin">UPCOMING</div>
@@ -309,7 +435,7 @@
   <!-- GARAGE -->
   <section class="screen" id="screen-garage">
     <div class="screenTitle">GARAGE</div>
-    <div class="screenSub">ISSUES // TYRES // PARTS // DOCUMENTS // LICENCE</div>
+    <div class="screenSub">ISSUES // BUILD SHEET // PARTS</div>
 
     <div class="fullCard">
       <div class="sectionHead">
@@ -318,15 +444,6 @@
       </div>
       <button class="primaryButton compactButton" data-open-modal="issueModal">＋ ADD ISSUE</button>
       <div id="issuesList" class="dataList emptyState">BRAK DANYCH</div>
-    </div>
-
-    <div class="fullCard">
-      <div class="sectionHead">
-        <div class="label noMargin">TYRES</div>
-        <div class="tinyBadge" id="activeTyreBadge">NO ACTIVE SET</div>
-      </div>
-      <button class="secondaryButton compactButton" data-open-modal="tyreModal">＋ ADD TYRE SET</button>
-      <div id="tyreList" class="dataList emptyState">BRAK DANYCH</div>
     </div>
 
     <div class="fullCard buildSheetCard">
@@ -396,33 +513,6 @@
       <div id="partsList" class="dataList emptyState">BRAK DANYCH</div>
     </div>
 
-    <div class="fullCard">
-      <div class="sectionHead">
-        <div class="label noMargin">DOCUMENTS</div>
-        <div class="tinyBadge" id="documentsBadge">0 ACTIVE</div>
-      </div>
-      <button class="secondaryButton compactButton" data-open-modal="documentModal">＋ ADD DOCUMENT</button>
-      <div id="documentsList" class="dataList emptyState">BRAK DANYCH</div>
-    </div>
-
-    <div class="fullCard licenceCard">
-      <div class="sectionHead">
-        <div class="label noMargin">DRIVING LICENCE</div>
-        <div class="tinyBadge" id="licenceBadge">—</div>
-      </div>
-      <div class="licenceGrid">
-        <div>
-          <div class="miniLabel">VALID UNTIL</div>
-          <div class="licenceDate" id="licenceExpiry">—</div>
-        </div>
-        <div class="right">
-          <div class="miniLabel">TIME LEFT</div>
-          <div class="licenceTime" id="licenceTimeLeft">—</div>
-        </div>
-      </div>
-      <div id="licenceNote" class="dataSub licenceNote"></div>
-      <button class="secondaryButton compactButton" data-open-modal="licenceModal">EDIT DRIVING LICENCE</button>
-    </div>
   </section>
 
   <!-- LOG -->
@@ -501,6 +591,12 @@
     </div>
 
     <div class="fullCard">
+      <div class="label">TYRE ROTATION</div>
+      <label class="field"><span>DEFAULT ROTATION INTERVAL [KM]</span><input type="number" id="settingTyreRotation" value="8000"></label>
+      <button class="primaryButton" id="saveTyreSettingsBtn">SAVE TYRE SETTINGS</button>
+    </div>
+
+    <div class="fullCard">
       <div class="label">BACKUP / EXPORT</div>
       <button class="primaryButton" id="exportBackupBtn">EXPORT BACKUP JSON</button>
       <label class="fileButton">IMPORT BACKUP JSON<input type="file" id="importBackupInput" accept="application/json,.json"></label>
@@ -523,7 +619,7 @@
 </main>
 
 <nav class="bottomNav">
-  <button class="navBtn active" data-screen="mission"><span>◉</span><small>MISSION</small></button>
+  <button class="navBtn active" id="homeNavBtn" data-screen="mission"><span>◉</span><small id="homeNavLabel">MISSION</small></button>
   <button class="navBtn" data-screen="drive"><span>⛽</span><small>DRIVE</small></button>
   <button class="navBtn" data-screen="service"><span>🔧</span><small>SERVICE</small></button>
   <button class="navBtn" data-screen="garage"><span>▣</span><small>GARAGE</small></button>
@@ -570,7 +666,7 @@
   <button id="toastUndo" hidden>UNDO</button>
 </div>
 
-<script src="app-v63.js"></script>
-<script src="i18n-v63.js"></script>
+<script src="app-v70.js"></script>
+<script src="i18n-v70.js"></script>
 </body>
 </html>
