@@ -1,7 +1,7 @@
 {
   "name": "MPS Mission Control",
   "short_name": "MPS Control",
-  "description": "Mazda 3 MPS mission, fuel, service and cost telemetry.",
+  "description": "Mazda 3 MPS: misja, paliwo, serwis, harmonogram, koszty i historia auta. Interfejs PL/EN.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -9,37 +9,25 @@
   <meta name="apple-mobile-web-app-title" content="MPS Control">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="style-v31.css">
+  <link rel="stylesheet" href="style-v61.css">
   <title>MPS Mission Control</title>
 </head>
-<body>
+<body data-app-mode="PROD">
 
 <header class="header">
-  <div>
-    <div class="headerTitle" id="headerTitle">Odbiór Mazdy</div>
-    <div class="headerVersion">MPS MISSION CONTROL // PWA v3.1 CACHE FIX</div>
-  </div>
+  <div class="headerTitle">Odbiór Mazdy</div>
+  <div class="headerVersion">MPS OPERATING SYSTEM // PWA v6.1 // LIVE</div>
 </header>
 
 <main class="container">
 
-  <!-- =======================================================
-       MISSION
-       ======================================================= -->
+  <!-- MISSION -->
   <section class="screen active" id="screen-mission">
-
-    <div id="operationsBanner" class="operationsBanner" hidden>
-      <div class="label noMargin">POST-REBUILD OPERATIONS ACTIVE</div>
-      <div class="operationsBannerValue" id="operationsBannerValue"></div>
-    </div>
-
     <div class="sub">MPS REBUILD // LIVE TELEMETRY</div>
     <div class="status" id="status">LOADING...</div>
 
     <div class="percent" id="percent">0,000000%</div>
-    <div class="progressOuter">
-      <div class="progressInner" id="progress"></div>
-    </div>
+    <div class="progressOuter"><div class="progressInner" id="progress"></div></div>
 
     <div class="grid two">
       <div class="card">
@@ -60,7 +48,6 @@
           <div class="dayDate" id="dayDate"></div>
           <div class="dayClock" id="dayClock"></div>
         </div>
-
         <div class="dayRingWrap">
           <svg class="dayRing" viewBox="0 0 120 120">
             <circle class="dayRingBg" cx="60" cy="60" r="46"></circle>
@@ -93,9 +80,7 @@
         <div class="label noMargin">PHASE PROGRESS</div>
         <div class="phasePct" id="phaseProgress">0,0000%</div>
       </div>
-      <div class="miniProgressOuter">
-        <div class="miniProgressInner" id="phaseBar"></div>
-      </div>
+      <div class="miniProgressOuter"><div class="miniProgressInner" id="phaseBar"></div></div>
     </div>
 
     <div class="fullCard">
@@ -110,33 +95,15 @@
       </div>
       <div class="bufferValue" id="bufferValue"></div>
       <div class="bufferSub" id="bufferSub"></div>
-
       <div class="etaGrid">
-        <div>
-          <div class="miniLabel">EARLIEST READY</div>
-          <div class="miniValue">05.09.2026</div>
-        </div>
-        <div class="right">
-          <div class="miniLabel">TARGET PICKUP</div>
-          <div class="miniValue">12.09.2026</div>
-        </div>
+        <div><div class="miniLabel">EARLIEST READY</div><div class="miniValue">05.09.2026</div></div>
+        <div class="right"><div class="miniLabel">TARGET PICKUP</div><div class="miniValue">12.09.2026</div></div>
       </div>
     </div>
 
     <div class="fullCard">
       <div class="label">NEXT PHASE</div>
       <div class="valueSmall" id="nextPhase"></div>
-    </div>
-
-    <div class="fullCard" id="breakInCard" hidden>
-      <div class="label">EST. BREAK-IN // TIMELINE</div>
-      <div class="sectionHead">
-        <div class="value green" id="breakIn"></div>
-        <div class="phasePct" id="breakInPct"></div>
-      </div>
-      <div class="miniProgressOuter">
-        <div class="miniProgressInner" id="breakInBar"></div>
-      </div>
     </div>
 
     <div class="fullCard">
@@ -153,19 +120,28 @@
       <div class="system" id="system">&gt; ALL SYSTEMS NOMINAL</div>
     </div>
 
-    <button class="primaryButton bigMissionButton" id="completeMissionBtn">
-      😎 MAM MAZDĘ // START OPERATIONS
-    </button>
-
+    <button class="primaryButton successButton" id="completeMissionBtn">😎 MAM MAZDĘ // START OPERATIONS</button>
   </section>
 
-  <!-- =======================================================
-       DRIVE
-       ======================================================= -->
+  <!-- DRIVE -->
   <section class="screen" id="screen-drive">
-
     <div class="screenTitle">DRIVE CONTROL</div>
-    <div class="screenSub">FUEL // ODOMETER // COST TELEMETRY</div>
+    <div class="screenSub">FUEL // ODOMETER // COST // REPORTS</div>
+
+    <div class="fullCard snapshotCard">
+      <div class="sectionHead">
+        <div class="label noMargin">VEHICLE SNAPSHOT</div>
+        <div class="tinyBadge" id="snapshotStatus">WAITING FOR PICKUP</div>
+      </div>
+      <div class="snapshotGrid">
+        <div><span>ODO</span><b id="snapOdo">—</b></div>
+        <div><span>SINCE REBUILD</span><b id="snapSince">—</b></div>
+        <div><span>OIL LEFT</span><b id="snapOil">—</b></div>
+        <div><span>LAST FUEL</span><b id="snapFuel">—</b></div>
+        <div><span>OPEN ISSUES</span><b id="snapIssues">0</b></div>
+        <div><span>NEXT SERVICE</span><b id="snapNextService">—</b></div>
+      </div>
+    </div>
 
     <div class="grid two">
       <div class="card">
@@ -182,97 +158,85 @@
 
     <div class="fullCard">
       <div class="sectionHead">
-        <div class="label noMargin">FUEL // 98 RON</div>
-        <div class="tinyBadge" id="fuelIntervalsBadge">0 VALID INTERVALS</div>
+        <div class="label noMargin">FUEL // FULL-TO-FULL</div>
+        <div class="tinyBadge" id="fuelIntervalsBadge">0 VALID</div>
       </div>
-
       <div class="statsGrid">
-        <div class="stat">
-          <div class="miniLabel">LAST</div>
-          <div class="statValue green" id="fuelLast">—</div>
-          <div class="statUnit">L/100 KM</div>
-        </div>
-        <div class="stat">
-          <div class="miniLabel">AVERAGE</div>
-          <div class="statValue" id="fuelAvg">—</div>
-          <div class="statUnit">L/100 KM</div>
-        </div>
-        <div class="stat">
-          <div class="miniLabel">BEST</div>
-          <div class="statValue" id="fuelBest">—</div>
-          <div class="statUnit">L/100 KM</div>
-        </div>
-        <div class="stat">
-          <div class="miniLabel">WORST</div>
-          <div class="statValue" id="fuelWorst">—</div>
-          <div class="statUnit">L/100 KM</div>
-        </div>
+        <div class="stat"><div class="miniLabel">LAST</div><div class="statValue green" id="fuelLast">—</div><div class="statUnit">L/100 KM</div></div>
+        <div class="stat"><div class="miniLabel">AVERAGE</div><div class="statValue" id="fuelAvg">—</div><div class="statUnit">L/100 KM</div></div>
+        <div class="stat"><div class="miniLabel">LAST 3</div><div class="statValue" id="fuelLast3">—</div><div class="statUnit">L/100 KM</div></div>
+        <div class="stat"><div class="miniLabel">LAST 5</div><div class="statValue" id="fuelLast5">—</div><div class="statUnit">L/100 KM</div></div>
+        <div class="stat"><div class="miniLabel">BEST</div><div class="statValue" id="fuelBest">—</div><div class="statUnit">L/100 KM</div></div>
+        <div class="stat"><div class="miniLabel">WORST</div><div class="statValue" id="fuelWorst">—</div><div class="statUnit">L/100 KM</div></div>
       </div>
-
-      <canvas id="fuelChart" height="150"></canvas>
+      <canvas id="fuelChart" height="160"></canvas>
     </div>
 
     <div class="fullCard">
-      <div class="label">FUEL COST</div>
+      <div class="label">FUEL ECONOMICS</div>
       <div class="statsGrid">
-        <div class="stat">
-          <div class="miniLabel">AVG PRICE</div>
-          <div class="statValue" id="avgFuelPrice">—</div>
-          <div class="statUnit">PLN/L</div>
-        </div>
-        <div class="stat">
-          <div class="miniLabel">COST / 100 KM</div>
-          <div class="statValue" id="fuelCost100">—</div>
-          <div class="statUnit">PLN</div>
-        </div>
-        <div class="stat">
-          <div class="miniLabel">FUEL COST / KM</div>
-          <div class="statValue" id="fuelCostKm">—</div>
-          <div class="statUnit">PLN/KM</div>
-        </div>
-        <div class="stat">
-          <div class="miniLabel">TOTAL FUEL</div>
-          <div class="statValue" id="totalFuelSpend">—</div>
-          <div class="statUnit">PLN</div>
-        </div>
+        <div class="stat"><div class="miniLabel">AVG PRICE</div><div class="statValue" id="avgFuelPrice">—</div><div class="statUnit">PLN/L</div></div>
+        <div class="stat"><div class="miniLabel">PRICE MIN/MAX</div><div class="statValue smallStat" id="fuelPriceRange">—</div><div class="statUnit">PLN/L</div></div>
+        <div class="stat"><div class="miniLabel">COST / 100 KM</div><div class="statValue" id="fuelCost100">—</div><div class="statUnit">PLN</div></div>
+        <div class="stat"><div class="miniLabel">FUEL COST / KM</div><div class="statValue" id="fuelCostKm">—</div><div class="statUnit">PLN/KM</div></div>
+      </div>
+    </div>
+
+    <div class="fullCard">
+      <div class="label">SEASON COMPARISON</div>
+      <div class="grid two noBottom">
+        <div class="seasonBox"><span>☀️ SUMMER</span><b id="summerAvg">—</b><small>L/100 KM</small></div>
+        <div class="seasonBox"><span>❄️ WINTER</span><b id="winterAvg">—</b><small>L/100 KM</small></div>
+      </div>
+    </div>
+
+    <div class="fullCard">
+      <div class="label">THIS MONTH</div>
+      <div class="statsGrid">
+        <div class="stat"><div class="miniLabel">DISTANCE</div><div class="statValue" id="monthKm">—</div><div class="statUnit">KM</div></div>
+        <div class="stat"><div class="miniLabel">FUEL SPEND</div><div class="statValue" id="monthFuelSpend">—</div><div class="statUnit">PLN</div></div>
+        <div class="stat"><div class="miniLabel">SERVICE + OTHER</div><div class="statValue" id="monthOtherSpend">—</div><div class="statUnit">PLN</div></div>
+        <div class="stat"><div class="miniLabel">TOTAL</div><div class="statValue green" id="monthTotalSpend">—</div><div class="statUnit">PLN</div></div>
       </div>
     </div>
 
     <div class="fullCard">
       <div class="label">COST CENTER</div>
+      <label class="switchRow">
+        <span>Include rebuild cost in total</span>
+        <input type="checkbox" id="includeRebuildCost" checked>
+      </label>
       <div class="costRows">
         <div class="costRow"><span>REBUILD COST / KM</span><b id="rebuildCostKm">—</b></div>
         <div class="costRow"><span>FUEL COST / KM</span><b id="costFuelKm2">—</b></div>
-        <div class="costRow"><span>SERVICE COST / KM</span><b id="serviceCostKm">—</b></div>
+        <div class="costRow"><span>SERVICE + OTHER / KM</span><b id="serviceCostKm">—</b></div>
         <div class="costRow total"><span>TOTAL LOGGED COST / KM</span><b id="totalCostKm">—</b></div>
       </div>
-      <div class="costHint">Tak, koszt remontu/km ma boleć na początku xD</div>
     </div>
 
     <button class="primaryButton" data-open-modal="fuelModal">＋ ADD FUEL</button>
     <button class="secondaryButton" data-open-modal="odoModal">＋ ODOMETER READING</button>
+    <button class="secondaryButton" data-open-modal="expenseModal">＋ OTHER EXPENSE</button>
 
     <div class="fullCard topGap">
-      <div class="label">RECENT FUEL</div>
+      <div class="sectionHead">
+        <div class="label noMargin">RECENT FUEL</div>
+        <div class="tinyBadge">EDIT / DELETE</div>
+      </div>
       <div id="recentFuel" class="dataList emptyState">BRAK DANYCH</div>
     </div>
-
   </section>
 
-  <!-- =======================================================
-       SERVICE
-       ======================================================= -->
+  <!-- SERVICE -->
   <section class="screen" id="screen-service">
-
     <div class="screenTitle">SERVICE CONTROL</div>
-    <div class="screenSub">ENGINE OIL // FORECAST // HISTORY</div>
+    <div class="screenSub">OIL // MAINTENANCE // UPCOMING // OIL TOP-UPS</div>
 
     <div class="fullCard oilCard">
       <div class="sectionHead">
         <div class="label noMargin">ENGINE OIL</div>
         <div class="tinyBadge">VALVOLINE SYNPOWER 5W40</div>
       </div>
-
       <div class="oilLayout">
         <div>
           <div class="oilBig" id="oilLifePct">—</div>
@@ -289,30 +253,13 @@
           </div>
         </div>
       </div>
-
-      <div class="miniProgressOuter thick">
-        <div class="miniProgressInner" id="oilBar"></div>
-      </div>
-
+      <div class="miniProgressOuter thick"><div class="miniProgressInner" id="oilBar"></div></div>
       <div class="serviceGrid">
-        <div>
-          <div class="miniLabel">SINCE OIL</div>
-          <div class="miniValueBig" id="oilKmSince">—</div>
-        </div>
-        <div class="right">
-          <div class="miniLabel">TARGET</div>
-          <div class="miniValueBig" id="oilTargetKm">5 000 KM</div>
-        </div>
-        <div>
-          <div class="miniLabel">TIME SINCE</div>
-          <div class="miniValueBig" id="oilTimeSince">—</div>
-        </div>
-        <div class="right">
-          <div class="miniLabel">TIME MAX</div>
-          <div class="miniValueBig" id="oilTimeMax">8 MONTHS</div>
-        </div>
+        <div><div class="miniLabel">SINCE OIL</div><div class="miniValueBig" id="oilKmSince">—</div></div>
+        <div class="right"><div class="miniLabel">TARGET</div><div class="miniValueBig" id="oilTargetKm">5 000 KM</div></div>
+        <div><div class="miniLabel">TIME SINCE</div><div class="miniValueBig" id="oilTimeSince">—</div></div>
+        <div class="right"><div class="miniLabel">TIME MAX</div><div class="miniValueBig" id="oilTimeMax">8 MONTHS</div></div>
       </div>
-
       <div class="forecastBox">
         <div class="miniLabel">EST. OIL SERVICE</div>
         <div class="forecastDate" id="oilForecastDate">—</div>
@@ -321,48 +268,104 @@
     </div>
 
     <div class="fullCard">
-      <div class="label">DRIVING TREND</div>
-      <div class="statsGrid">
-        <div class="stat">
-          <div class="miniLabel">AVG 30 DAYS</div>
-          <div class="statValue" id="avgKmDay">—</div>
-          <div class="statUnit">KM/DAY</div>
-        </div>
-        <div class="stat">
-          <div class="miniLabel">PROJECTED YEAR</div>
-          <div class="statValue" id="projectedYearKm">—</div>
-          <div class="statUnit">KM/YEAR</div>
-        </div>
-        <div class="stat">
-          <div class="miniLabel">KM TO OIL</div>
-          <div class="statValue green" id="kmToOil">—</div>
-          <div class="statUnit">KM</div>
-        </div>
-        <div class="stat">
-          <div class="miniLabel">SOFT MAX LEFT</div>
-          <div class="statValue" id="kmToOilSoft">—</div>
-          <div class="statUnit">KM</div>
-        </div>
+      <div class="sectionHead">
+        <div class="label noMargin">OIL TOP-UP TRACKER</div>
+        <div class="tinyBadge" id="oilTopupBadge">0 ENTRIES</div>
       </div>
+      <div class="statsGrid">
+        <div class="stat"><div class="miniLabel">TOPPED UP</div><div class="statValue" id="oilTopupTotal">—</div><div class="statUnit">L SINCE BASE</div></div>
+        <div class="stat"><div class="miniLabel">RATE</div><div class="statValue" id="oilTopupRate">—</div><div class="statUnit">L / 1000 KM</div></div>
+      </div>
+      <button class="secondaryButton" data-open-modal="oilTopupModal">＋ ADD OIL TOP-UP / CHECK</button>
+      <div id="oilTopupList" class="dataList topGapSmall"></div>
     </div>
 
-    <button class="primaryButton" data-open-modal="serviceModal">＋ ADD SERVICE</button>
+    <div class="fullCard">
+      <div class="sectionHead">
+        <div class="label noMargin">UPCOMING</div>
+        <div class="tinyBadge" id="upcomingBadge">0 ITEMS</div>
+      </div>
+      <div id="upcomingList" class="dataList emptyState">BRAK DANYCH</div>
+    </div>
+
+    <button class="primaryButton" data-open-modal="maintenanceModal">＋ ADD MAINTENANCE ITEM</button>
+    <button class="secondaryButton" data-open-modal="serviceModal">＋ ADD SERVICE EVENT</button>
     <button class="secondaryButton" data-open-modal="oilBaselineModal">SET / RESET OIL BASELINE</button>
 
     <div class="fullCard topGap">
+      <div class="sectionHead">
+        <div class="label noMargin">MAINTENANCE SCHEDULE</div>
+        <div class="tinyBadge">CUSTOM INTERVALS</div>
+      </div>
+      <div id="maintenanceList" class="dataList emptyState">BRAK DANYCH</div>
+    </div>
+
+    <div class="fullCard">
       <div class="label">SERVICE HISTORY</div>
       <div id="serviceHistory" class="dataList emptyState">BRAK DANYCH</div>
     </div>
-
   </section>
 
-  <!-- =======================================================
-       LOG
-       ======================================================= -->
-  <section class="screen" id="screen-log">
+  <!-- GARAGE -->
+  <section class="screen" id="screen-garage">
+    <div class="screenTitle">GARAGE</div>
+    <div class="screenSub">ISSUES // TYRES // PARTS // DOCUMENTS</div>
 
+    <div class="fullCard">
+      <div class="sectionHead">
+        <div class="label noMargin">ISSUES / SYMPTOMS</div>
+        <div class="tinyBadge" id="issuesBadge">0 OPEN</div>
+      </div>
+      <button class="primaryButton compactButton" data-open-modal="issueModal">＋ ADD ISSUE</button>
+      <div id="issuesList" class="dataList emptyState">BRAK DANYCH</div>
+    </div>
+
+    <div class="fullCard">
+      <div class="sectionHead">
+        <div class="label noMargin">TYRES</div>
+        <div class="tinyBadge" id="activeTyreBadge">NO ACTIVE SET</div>
+      </div>
+      <button class="secondaryButton compactButton" data-open-modal="tyreModal">＋ ADD TYRE SET</button>
+      <div id="tyreList" class="dataList emptyState">BRAK DANYCH</div>
+    </div>
+
+    <div class="fullCard">
+      <div class="sectionHead">
+        <div class="label noMargin">PARTS / SPECS / MODS</div>
+        <div class="tinyBadge" id="partsBadge">0 ITEMS</div>
+      </div>
+      <button class="secondaryButton compactButton" data-open-modal="partModal">＋ ADD ITEM</button>
+      <input class="searchInput" id="partsSearch" placeholder="Szukaj: BNR, HPFP, świeca, filtr...">
+      <div id="partsList" class="dataList emptyState">BRAK DANYCH</div>
+    </div>
+
+    <div class="fullCard">
+      <div class="sectionHead">
+        <div class="label noMargin">DOCUMENTS</div>
+        <div class="tinyBadge" id="documentsBadge">0 ACTIVE</div>
+      </div>
+      <button class="secondaryButton compactButton" data-open-modal="documentModal">＋ ADD DOCUMENT</button>
+      <div id="documentsList" class="dataList emptyState">BRAK DANYCH</div>
+    </div>
+  </section>
+
+  <!-- LOG -->
+  <section class="screen" id="screen-log">
     <div class="screenTitle">VEHICLE LOG</div>
-    <div class="screenSub">FUEL // SERVICE // ODOMETER // MISSION</div>
+    <div class="screenSub">SEARCH // FILTER // FULL HISTORY</div>
+
+    <div class="filterRow">
+      <input class="searchInput flex1" id="logSearch" placeholder="Szukaj wpisów...">
+      <select id="logTypeFilter">
+        <option value="all">ALL</option>
+        <option value="fuel">FUEL</option>
+        <option value="service">SERVICE</option>
+        <option value="odo">ODO</option>
+        <option value="issue">ISSUE</option>
+        <option value="expense">COST</option>
+        <option value="oil">OIL</option>
+      </select>
+    </div>
 
     <div class="fullCard">
       <div class="sectionHead">
@@ -372,100 +375,111 @@
       <div id="vehicleLog" class="vehicleLog emptyState">BRAK DANYCH</div>
     </div>
 
+    <button class="secondaryButton" id="exportCsvBtn">EXPORT VEHICLE LOG CSV</button>
   </section>
 
-  <!-- =======================================================
-       SETTINGS
-       ======================================================= -->
+  <!-- SETTINGS -->
   <section class="screen" id="screen-settings">
-
     <div class="screenTitle">SETTINGS</div>
-    <div class="screenSub">LOCAL DATA // NO CLOUD REQUIRED</div>
+    <div class="screenSub">INDEXEDDB // BACKUP // CONFIG</div>
+
+    <div class="fullCard languageCard">
+      <div class="sectionHead">
+        <div class="label noMargin">LANGUAGE</div>
+        <div class="tinyBadge">PL / EN</div>
+      </div>
+      <label class="field">
+        <span>INTERFACE LANGUAGE</span>
+        <select id="languageSelect">
+          <option value="pl">Polski</option>
+          <option value="en">English</option>
+        </select>
+      </label>
+      <div class="backupHint">Language changes only the interface. Vehicle data and units stay unchanged.</div>
+    </div>
+
+    <div class="fullCard">
+      <div class="sectionHead">
+        <div class="label noMargin">DATA ENGINE</div>
+        <div class="tinyBadge greenBadge">INDEXEDDB</div>
+      </div>
+      <div class="backupHint" id="storageInfo">Loading database...</div>
+    </div>
 
     <div class="fullCard">
       <div class="label">POST-REBUILD BASELINE</div>
-
-      <label class="field">
-        <span>PICKUP DATE</span>
-        <input type="datetime-local" id="settingPickupDate">
-      </label>
-
-      <label class="field">
-        <span>PICKUP ODOMETER [KM]</span>
-        <input type="number" inputmode="decimal" id="settingPickupOdo" placeholder="np. 168420">
-      </label>
-
-      <label class="field">
-        <span>CURRENT ODOMETER [KM]</span>
-        <input type="number" inputmode="decimal" id="settingCurrentOdo" placeholder="np. 168420">
-      </label>
-
-      <label class="field">
-        <span>REBUILD COST [PLN]</span>
-        <input type="number" inputmode="decimal" id="settingRebuildCost" value="46000">
-      </label>
-
+      <label class="field"><span>PICKUP DATE</span><input type="datetime-local" id="settingPickupDate"></label>
+      <label class="field"><span>PICKUP ODOMETER [KM]</span><input type="number" inputmode="decimal" id="settingPickupOdo"></label>
+      <label class="field"><span>CURRENT ODOMETER [KM]</span><input type="number" inputmode="decimal" id="settingCurrentOdo"></label>
+      <label class="field"><span>REBUILD COST [PLN]</span><input type="number" inputmode="decimal" id="settingRebuildCost" value="46000"></label>
+      <label class="field"><span>FUEL TANK CAPACITY [L]</span><input type="number" inputmode="decimal" id="settingTankCapacity" value="55"></label>
       <button class="primaryButton" id="saveBaselineBtn">SAVE BASELINE</button>
     </div>
 
     <div class="fullCard">
       <div class="label">OIL INTERVAL</div>
-
-      <label class="field">
-        <span>TARGET [KM]</span>
-        <input type="number" id="settingOilTarget" value="5000">
-      </label>
-
-      <label class="field">
-        <span>SOFT MAX [KM]</span>
-        <input type="number" id="settingOilSoftMax" value="6000">
-      </label>
-
-      <label class="field">
-        <span>TIME MAX [MONTHS]</span>
-        <input type="number" id="settingOilMonths" value="8">
-      </label>
-
+      <label class="field"><span>TARGET [KM]</span><input type="number" id="settingOilTarget" value="5000"></label>
+      <label class="field"><span>SOFT MAX [KM]</span><input type="number" id="settingOilSoftMax" value="6000"></label>
+      <label class="field"><span>TIME MAX [MONTHS]</span><input type="number" id="settingOilMonths" value="8"></label>
       <button class="primaryButton" id="saveOilSettingsBtn">SAVE OIL SETTINGS</button>
     </div>
 
     <div class="fullCard">
-      <div class="label">BACKUP</div>
+      <div class="label">BACKUP / EXPORT</div>
       <button class="primaryButton" id="exportBackupBtn">EXPORT BACKUP JSON</button>
+      <label class="fileButton">IMPORT BACKUP JSON<input type="file" id="importBackupInput" accept="application/json,.json"></label>
+      <div class="backupHint">Backup obejmuje paliwo, serwis, issues, opony, części, dokumenty i ustawienia.</div>
+    </div>
 
-      <label class="fileButton">
-        IMPORT BACKUP JSON
-        <input type="file" id="importBackupInput" accept="application/json,.json">
-      </label>
-
-      <div class="backupHint">
-        Dane są trzymane w localStorage tego iPhone’a. Backup warto zrobić po każdym większym serwisie albo raz na jakiś czas.
-      </div>
+    <div id="testTools" class="fullCard testCard" hidden>
+      <div class="label">TEST LAB</div>
+      <button class="testButton" id="loadDemoBtn">LOAD DEMO DATA</button>
+      <button class="secondaryButton" id="clearTestBtn">CLEAR TEST DATABASE</button>
+      <div class="backupHint">Ta wersja korzysta z osobnej bazy i nie dotyka danych produkcyjnej apki.</div>
     </div>
 
     <div class="fullCard dangerCard">
       <div class="label">DANGER ZONE</div>
-      <button class="dangerButton" id="resetDataBtn">RESET ALL LOCAL DATA</button>
+      <button class="dangerButton" id="resetDataBtn">RESET ALL APP DATA</button>
     </div>
-
   </section>
 
 </main>
 
-<!-- =========================================================
-     NAV
-     ========================================================= -->
 <nav class="bottomNav">
   <button class="navBtn active" data-screen="mission"><span>◉</span><small>MISSION</small></button>
   <button class="navBtn" data-screen="drive"><span>⛽</span><small>DRIVE</small></button>
   <button class="navBtn" data-screen="service"><span>🔧</span><small>SERVICE</small></button>
+  <button class="navBtn" data-screen="garage"><span>▣</span><small>GARAGE</small></button>
   <button class="navBtn" data-screen="log"><span>≡</span><small>LOG</small></button>
-  <button class="navBtn" data-screen="settings"><span>⚙</span><small>SETTINGS</small></button>
+  <button class="navBtn" data-screen="settings"><span>⚙</span><small>SET</small></button>
 </nav>
 
-<!-- =========================================================
-     MILESTONE
-     ========================================================= -->
+<!-- Generic modal -->
+<div class="modal" id="formModal" hidden>
+  <div class="modalSheet">
+    <div class="modalTitle" id="formModalTitle">FORM</div>
+    <div class="modalSub" id="formModalSub"></div>
+    <div id="formModalBody"></div>
+    <button class="primaryButton" id="formModalSave">SAVE</button>
+    <button class="secondaryButton" id="formModalCancel">CANCEL</button>
+  </div>
+</div>
+
+<!-- Mission complete -->
+<div class="modal" id="missionCompleteModal" hidden>
+  <div class="modalSheet">
+    <div class="modalTitle">MISSION COMPLETE 😎</div>
+    <div class="modalSub">Wpisz faktyczną datę odbioru i przebieg.</div>
+    <label class="field"><span>PICKUP DATE</span><input type="datetime-local" id="pickupDateInput"></label>
+    <label class="field"><span>ODOMETER [KM]</span><input type="number" inputmode="decimal" id="pickupOdoInput"></label>
+    <label class="checkField"><input type="checkbox" id="pickupOilBaseline" checked><span>Ustaw jako bazę finalnego oleju</span></label>
+    <button class="primaryButton" id="confirmPickupBtn">START OPERATIONS</button>
+    <button class="secondaryButton" id="cancelPickupBtn">CANCEL</button>
+  </div>
+</div>
+
+<!-- Milestone -->
 <div class="celebration" id="celebration" hidden>
   <div class="celebrationInner">
     <div class="celebrationKicker">MILESTONE REACHED</div>
@@ -475,168 +489,12 @@
   </div>
 </div>
 
-<!-- =========================================================
-     MODAL: MISSION COMPLETE
-     ========================================================= -->
-<div class="modal" id="missionCompleteModal" hidden>
-  <div class="modalSheet">
-    <div class="modalTitle">MISSION COMPLETE 😎</div>
-    <div class="modalSub">Wpisz faktyczną datę odbioru i przebieg. To uruchomi post-rebuild operations.</div>
-
-    <label class="field">
-      <span>PICKUP DATE</span>
-      <input type="datetime-local" id="pickupDateInput">
-    </label>
-
-    <label class="field">
-      <span>ODOMETER [KM]</span>
-      <input type="number" inputmode="decimal" id="pickupOdoInput" placeholder="np. 168420">
-    </label>
-
-    <label class="checkField">
-      <input type="checkbox" id="pickupOilBaseline" checked>
-      <span>Ustaw tę datę/przebieg jako bazę finalnego oleju</span>
-    </label>
-
-    <button class="primaryButton" id="confirmPickupBtn">START OPERATIONS</button>
-    <button class="secondaryButton" data-close-modal="missionCompleteModal">CANCEL</button>
-  </div>
+<div class="toast" id="toast" hidden>
+  <span id="toastText"></span>
+  <button id="toastUndo" hidden>UNDO</button>
 </div>
 
-<!-- =========================================================
-     MODAL: FUEL
-     ========================================================= -->
-<div class="modal" id="fuelModal" hidden>
-  <div class="modalSheet">
-    <div class="modalTitle">ADD FUEL</div>
-    <div class="modalSub">Full-to-full liczy się dopiero pomiędzy dwoma tankowaniami oznaczonymi FULL TANK.</div>
-
-    <label class="field">
-      <span>DATE</span>
-      <input type="datetime-local" id="fuelDate">
-    </label>
-
-    <label class="field">
-      <span>ODOMETER [KM]</span>
-      <input type="number" inputmode="decimal" id="fuelOdo">
-    </label>
-
-    <div class="grid two">
-      <label class="field">
-        <span>LITERS</span>
-        <input type="number" inputmode="decimal" step="0.01" id="fuelLiters">
-      </label>
-      <label class="field">
-        <span>TOTAL [PLN]</span>
-        <input type="number" inputmode="decimal" step="0.01" id="fuelTotal">
-      </label>
-    </div>
-
-    <div class="computedLine">PRICE/L: <b id="fuelPricePreview">—</b></div>
-
-    <label class="checkField">
-      <input type="checkbox" id="fuelFull" checked>
-      <span>FULL TANK</span>
-    </label>
-
-    <label class="field">
-      <span>STATION / NOTE [OPTIONAL]</span>
-      <input type="text" id="fuelNote" placeholder="np. Orlen / A4">
-    </label>
-
-    <button class="primaryButton" id="saveFuelBtn">SAVE FUEL</button>
-    <button class="secondaryButton" data-close-modal="fuelModal">CANCEL</button>
-  </div>
-</div>
-
-<!-- =========================================================
-     MODAL: ODO
-     ========================================================= -->
-<div class="modal" id="odoModal" hidden>
-  <div class="modalSheet">
-    <div class="modalTitle">ODOMETER READING</div>
-
-    <label class="field">
-      <span>DATE</span>
-      <input type="datetime-local" id="odoDate">
-    </label>
-
-    <label class="field">
-      <span>ODOMETER [KM]</span>
-      <input type="number" inputmode="decimal" id="odoValue">
-    </label>
-
-    <button class="primaryButton" id="saveOdoBtn">SAVE READING</button>
-    <button class="secondaryButton" data-close-modal="odoModal">CANCEL</button>
-  </div>
-</div>
-
-<!-- =========================================================
-     MODAL: SERVICE
-     ========================================================= -->
-<div class="modal" id="serviceModal" hidden>
-  <div class="modalSheet">
-    <div class="modalTitle">ADD SERVICE</div>
-
-    <label class="field">
-      <span>DATE</span>
-      <input type="datetime-local" id="serviceDate">
-    </label>
-
-    <label class="field">
-      <span>ODOMETER [KM]</span>
-      <input type="number" inputmode="decimal" id="serviceOdo">
-    </label>
-
-    <label class="field">
-      <span>SERVICE</span>
-      <input type="text" id="serviceName" placeholder="np. Oil + filter / plugs">
-    </label>
-
-    <label class="field">
-      <span>COST [PLN]</span>
-      <input type="number" inputmode="decimal" step="0.01" id="serviceCost" placeholder="0">
-    </label>
-
-    <label class="checkField">
-      <input type="checkbox" id="serviceSetsOil">
-      <span>To jest wymiana oleju — ustaw nową bazę interwału</span>
-    </label>
-
-    <label class="field">
-      <span>NOTE [OPTIONAL]</span>
-      <input type="text" id="serviceNote">
-    </label>
-
-    <button class="primaryButton" id="saveServiceBtn">SAVE SERVICE</button>
-    <button class="secondaryButton" data-close-modal="serviceModal">CANCEL</button>
-  </div>
-</div>
-
-<!-- =========================================================
-     MODAL: OIL BASELINE
-     ========================================================= -->
-<div class="modal" id="oilBaselineModal" hidden>
-  <div class="modalSheet">
-    <div class="modalTitle">OIL BASELINE</div>
-
-    <label class="field">
-      <span>DATE</span>
-      <input type="datetime-local" id="oilBaseDate">
-    </label>
-
-    <label class="field">
-      <span>ODOMETER [KM]</span>
-      <input type="number" inputmode="decimal" id="oilBaseOdo">
-    </label>
-
-    <button class="primaryButton" id="saveOilBaselineBtn">SAVE OIL BASELINE</button>
-    <button class="secondaryButton" data-close-modal="oilBaselineModal">CANCEL</button>
-  </div>
-</div>
-
-<div class="toast" id="toast" hidden></div>
-
-<script src="app-v31.js"></script>
+<script src="app-v61.js"></script>
+<script src="i18n-v61.js"></script>
 </body>
 </html>
