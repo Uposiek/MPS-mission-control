@@ -1,64 +1,63 @@
 *{box-sizing:border-box}
 :root{
   color-scheme:dark;
-  --blue:#0878ee;
-  --blue2:#4ba3ff;
-  --green:#39d353;
-  --green2:#4be56a;
-  --orange:#ff9f35;
-  --red:#ff453a;
-  --bg:#101215;
-  --bg2:#181b20;
-  --card:#20242a;
-  --border:#30353c;
-  --muted:#858b94;
-  --muted2:#686e77;
-  --text:#ffffff;
+  --blue:#0878ee;--blue2:#4ba3ff;
+  --green:#39d353;--green2:#4be56a;
+  --orange:#ff9f35;--red:#ff453a;
+  --bg:#101215;--bg2:#181b20;
+  --card:#20242a;--border:#30353c;
+  --muted:#858b94;--muted2:#686e77;--text:#fff;
 }
 html,body{
   margin:0;min-height:100%;
-  background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+  background:linear-gradient(180deg,var(--bg),var(--bg2));
   color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif
 }
-body{padding-bottom:env(safe-area-inset-bottom)}
+body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+button,input{font:inherit}
 .header{
   background:var(--blue);
-  padding:calc(16px + env(safe-area-inset-top)) 20px 14px;
-  text-align:center;
-  position:sticky;top:0;z-index:5;
+  padding:calc(14px + env(safe-area-inset-top)) 20px 13px;
+  text-align:center;position:sticky;top:0;z-index:20;
+  box-shadow:0 1px 0 rgba(255,255,255,.06)
 }
-.headerTitle{font-size:25px;font-weight:750}
+.headerTitle{font-size:25px;font-weight:800}
 .headerVersion{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:8px;letter-spacing:1.4px;opacity:.72;margin-top:3px;
+  font-size:8px;letter-spacing:1.5px;opacity:.7;margin-top:3px
 }
 .container{padding:20px;max-width:760px;margin:0 auto}
-.sub{
+.screen{display:none}.screen.active{display:block}
+.screenTitle{font-size:27px;font-weight:850;margin:2px 0 3px}
+.screenSub,.sub{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:11px;color:#8d929b;letter-spacing:1px;margin-bottom:8px
+  font-size:10px;color:#8d929b;letter-spacing:1.2px;margin-bottom:16px
 }
-.status{font-size:16px;font-weight:700;margin-bottom:20px}
+.status{font-size:16px;font-weight:750;margin-bottom:20px}
 .percent{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:47px;font-weight:800;color:var(--green);
+  font-size:47px;font-weight:900;color:var(--green);
   letter-spacing:-2px;margin-bottom:10px
 }
-.progressOuter{
-  width:100%;height:26px;background:#30343a;border-radius:13px;
-  overflow:hidden;margin-bottom:22px
+.progressOuter,.miniProgressOuter{
+  width:100%;background:#30343a;border-radius:999px;overflow:hidden
 }
-.progressInner{
-  height:100%;width:0;
-  background:linear-gradient(90deg,#25b943,var(--green2));
-  border-radius:13px;transition:width .1s linear
+.progressOuter{height:26px;margin-bottom:22px}
+.progressInner,.miniProgressInner{
+  height:100%;width:0;background:linear-gradient(90deg,#25b943,var(--green2));
+  border-radius:999px;transition:width .1s linear
 }
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.card,.fullCard,.missionDayCard{
+.miniProgressOuter{height:9px;margin-top:10px}
+.miniProgressOuter.thick{height:12px}
+.grid{display:grid;gap:10px}
+.grid.two{grid-template-columns:1fr 1fr;margin-bottom:10px}
+.card,.fullCard,.missionDayCard,.operationsBanner{
   background:var(--card);border:1px solid var(--border);border-radius:13px
 }
 .card{padding:13px;min-width:0}
 .fullCard{padding:13px;margin-bottom:10px}
+.topGap{margin-top:10px}
 .label{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   font-size:10px;color:var(--muted);margin-bottom:6px;letter-spacing:1px
@@ -66,11 +65,11 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 .noMargin{margin-bottom:0}
 .value{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:16px;font-weight:700;white-space:nowrap
+  font-size:16px;font-weight:750;white-space:nowrap
 }
 .valueSmall{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:13px;font-weight:700;line-height:1.35
+  font-size:13px;font-weight:750;line-height:1.35
 }
 .blue{color:var(--blue2)}.green{color:var(--green)}.red{color:var(--red)}
 .sectionHead{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -81,62 +80,56 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 }
 .phasePct{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:13px;font-weight:800;color:var(--green)
+  font-size:13px;font-weight:850;color:var(--green)
 }
+
+/* MISSION DAY */
 .missionDayCard{padding:15px 18px;margin-bottom:10px}
 .missionDayLayout{display:flex;align-items:center;justify-content:space-between;gap:20px}
 .missionDayLeft{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0}
 .missionDayNumber{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:38px;font-weight:800;margin:2px 0 9px;white-space:nowrap
+  font-size:38px;font-weight:850;margin:2px 0 9px;white-space:nowrap
 }
 .dayDate{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.4px;margin-bottom:5px
+  font-size:11px;font-weight:650;color:var(--muted);letter-spacing:.4px;margin-bottom:5px
 }
 .dayClock{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:13px;font-weight:700;color:var(--blue2);white-space:nowrap
+  font-size:13px;font-weight:750;color:var(--blue2);white-space:nowrap
 }
-.dayRingWrap{position:relative;width:118px;height:118px;flex:0 0 118px}
-.dayRing{width:118px;height:118px;transform:rotate(-90deg);overflow:visible}
-.dayRingBg{fill:none;stroke:#343941;stroke-width:9}
-.dayRingFg{
+.dayRingWrap,.oilRingWrap{position:relative;width:118px;height:118px;flex:0 0 118px}
+.dayRing,.oilRing{width:118px;height:118px;transform:rotate(-90deg);overflow:visible}
+.dayRingBg,.oilRingBg{fill:none;stroke:#343941;stroke-width:9}
+.dayRingFg,.oilRingFg{
   fill:none;stroke:var(--green);stroke-width:9;stroke-linecap:round;
-  transition:stroke-dashoffset .1s linear
+  transition:stroke-dashoffset .1s linear,stroke .25s ease
 }
-.dayRingCenter{
+.dayRingCenter,.oilRingCenter{
   position:absolute;inset:0;display:flex;flex-direction:column;
   align-items:center;justify-content:center
 }
 .dayRingValue{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:14px;font-weight:800;letter-spacing:-.5px
+  font-size:14px;font-weight:850;letter-spacing:-.5px
 }
-.dayRingSub{
+.dayRingSub,.oilRingSub{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   font-size:8px;color:var(--muted);margin-top:3px;letter-spacing:1px
 }
-.legacyCard{border-color:#37404a}
+
+/* MISSION */
 .legacyValue{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:22px;font-weight:800;color:#fff;margin-top:9px
+  font-size:22px;font-weight:850;margin-top:9px
 }
 .legacySub{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   font-size:8px;color:var(--muted);margin-top:4px;letter-spacing:.8px
 }
-.miniProgressOuter{
-  width:100%;height:9px;background:#30343a;border-radius:999px;
-  overflow:hidden;margin-top:10px
-}
-.miniProgressInner{
-  height:100%;width:0;background:var(--green);
-  border-radius:999px;transition:width .1s linear
-}
 .phaseMap{
-  display:flex;align-items:stretch;gap:8px;overflow-x:auto;
-  padding:4px 1px 4px;scrollbar-width:none
+  display:flex;gap:8px;overflow-x:auto;padding:4px 1px;scrollbar-width:none
 }
 .phaseMap::-webkit-scrollbar{display:none}
 .phaseNode{
@@ -149,12 +142,10 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 .phaseNode.done{border-color:#295f36;background:#17241a}
 .phaseNode.done .name{color:#67c878}
 .phaseNode.active{border-color:var(--green);box-shadow:0 0 0 1px rgba(57,211,83,.18) inset}
-.phaseNode.active .name{color:#fff;font-weight:800}
+.phaseNode.active .name{color:#fff;font-weight:850}
 .phaseNode.future{opacity:.55}
-.scheduleCard{border-color:#37404a}
 .bufferValue{
-  margin-top:8px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  margin-top:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   font-size:27px;font-weight:900;color:var(--green)
 }
 .bufferValue.warning{color:var(--orange)}
@@ -163,7 +154,7 @@ body{padding-bottom:env(safe-area-inset-bottom)}
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   font-size:9px;color:var(--muted);margin-top:3px
 }
-.etaGrid{
+.etaGrid,.serviceGrid{
   margin-top:13px;padding-top:11px;border-top:1px solid #323840;
   display:grid;grid-template-columns:1fr 1fr;gap:12px
 }
@@ -173,32 +164,27 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 }
 .miniValue{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:10px;font-weight:700;margin-top:3px
+  font-size:10px;font-weight:750;margin-top:3px
 }
 .right{text-align:right}
 .missionLog{position:relative;margin-top:3px}
 .logEntry{
-  display:grid;grid-template-columns:64px 18px 1fr;gap:7px;align-items:start;
-  padding:7px 0
+  display:grid;grid-template-columns:64px 18px 1fr;gap:7px;align-items:start;padding:7px 0
 }
 .logDate{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   font-size:9px;color:var(--muted);padding-top:1px
 }
 .logDotWrap{position:relative;display:flex;justify-content:center;height:100%}
-.logDot{
-  width:8px;height:8px;border-radius:50%;background:#444b54;margin-top:2px;z-index:2
-}
-.logLine{
-  position:absolute;top:10px;bottom:-12px;width:1px;background:#353b43
-}
+.logDot{width:8px;height:8px;border-radius:50%;background:#444b54;margin-top:2px;z-index:2}
+.logLine{position:absolute;top:10px;bottom:-12px;width:1px;background:#353b43}
 .logEntry:last-child .logLine{display:none}
 .logEntry.actual .logDot{background:var(--green)}
 .logEntry.planned .logDot{background:var(--blue2)}
 .logEntry.future{opacity:.62}
 .logText{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:10px;font-weight:700;line-height:1.35
+  font-size:10px;font-weight:750;line-height:1.35
 }
 .logTag{
   display:inline-block;font-size:7px;color:var(--muted);border:1px solid #3a4048;
@@ -206,17 +192,188 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 }
 .system{
   color:var(--blue2);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:12px;font-weight:700
+  font-size:12px;font-weight:750
 }
-.footer{
-  text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:10px;color:var(--muted2);padding:15px 0 25px
+.operationsBanner{
+  padding:12px 13px;margin-bottom:12px;border-color:#295f36;background:#17241a
 }
-.celebration{
-  position:fixed;inset:0;z-index:50;background:rgba(7,9,12,.94);
-  display:flex;align-items:center;justify-content:center;padding:24px;
-  backdrop-filter:blur(12px)
+.operationsBannerValue{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  margin-top:6px;font-size:11px;font-weight:750;color:var(--green)
 }
+
+/* DRIVE */
+.metricXL{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:26px;font-weight:900;letter-spacing:-1px
+}
+.metricUnit,.statUnit{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:7px;color:var(--muted);margin-top:2px;letter-spacing:.8px
+}
+.statsGrid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px
+}
+.stat{
+  border:1px solid #313740;background:#1a1e23;border-radius:10px;padding:10px
+}
+.statValue{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:19px;font-weight:850;margin-top:4px
+}
+#fuelChart{
+  width:100%;height:150px;margin-top:14px;border-top:1px solid #30363e;padding-top:10px
+}
+.costRows{margin-top:3px}
+.costRow{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:9px 0;border-bottom:1px solid #30363e;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px
+}
+.costRow:last-child{border-bottom:0}
+.costRow b{font-size:12px;color:#fff}
+.costRow.total{color:var(--green);font-weight:850}
+.costRow.total b{color:var(--green)}
+.costHint{
+  margin-top:8px;color:var(--muted);font-size:9px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace
+}
+
+/* SERVICE */
+.oilCard{border-color:#365841}
+.oilLayout{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:8px
+}
+.oilBig{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:42px;font-weight:900;color:var(--green);letter-spacing:-1px
+}
+.oilCaption{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:8px;color:var(--muted);letter-spacing:1px
+}
+.oilRingMain{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:17px;font-weight:900
+}
+.miniValueBig{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12px;font-weight:800;margin-top:3px
+}
+.forecastBox{
+  margin-top:13px;border:1px solid #33413a;background:#18211b;border-radius:11px;padding:12px
+}
+.forecastDate{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:22px;font-weight:900;color:var(--green);margin-top:4px
+}
+.forecastReason{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:8px;color:var(--muted);margin-top:5px;letter-spacing:.7px
+}
+
+/* LISTS */
+.dataList,.vehicleLog{margin-top:5px}
+.emptyState{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10px;color:var(--muted)
+}
+.dataRow{
+  display:grid;grid-template-columns:1fr auto;gap:12px;
+  padding:10px 0;border-bottom:1px solid #30363e
+}
+.dataRow:last-child{border-bottom:0}
+.dataMain{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;font-weight:750;line-height:1.4
+}
+.dataSub{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:8px;color:var(--muted);margin-top:3px
+}
+.dataSide{
+  text-align:right;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;font-weight:800
+}
+.eventIcon{font-size:17px;margin-right:6px}
+
+/* BUTTONS */
+.primaryButton,.secondaryButton,.dangerButton,.fileButton{
+  display:block;width:100%;border:0;border-radius:12px;padding:13px 15px;
+  margin-top:10px;text-align:center;font-weight:850;font-size:13px
+}
+.primaryButton{background:var(--blue);color:#fff}
+.secondaryButton{background:#292f36;color:#fff;border:1px solid #3a414a}
+.dangerButton{background:#35191a;color:#ff7771;border:1px solid #5b292b}
+.bigMissionButton{margin:14px 0 6px;background:#166e2e}
+.fileButton{
+  background:#292f36;color:#fff;border:1px solid #3a414a;position:relative;overflow:hidden
+}
+.fileButton input{position:absolute;inset:0;opacity:0}
+.backupHint{
+  margin-top:9px;font-size:9px;color:var(--muted);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.45
+}
+.dangerCard{border-color:#583034}
+
+/* FORM */
+.field{display:block;margin-top:12px}
+.field span,.checkField span{
+  display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:8px;color:var(--muted);letter-spacing:.8px;margin-bottom:5px
+}
+.field input{
+  width:100%;border:1px solid #3b424c;border-radius:10px;
+  background:#171b20;color:#fff;padding:12px;font-size:15px;outline:none
+}
+.field input:focus{border-color:var(--blue2)}
+.checkField{
+  display:flex;align-items:center;gap:9px;margin-top:13px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace
+}
+.checkField span{margin:0;font-size:9px;color:#c9ced4}
+.checkField input{width:20px;height:20px}
+.computedLine{
+  margin-top:8px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:9px
+}
+.computedLine b{color:var(--green);font-size:11px}
+
+/* NAV */
+.bottomNav{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  padding:7px 8px calc(7px + env(safe-area-inset-bottom));
+  background:rgba(19,22,27,.94);backdrop-filter:blur(18px);
+  border-top:1px solid #30353c;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:3px
+}
+.navBtn{
+  border:0;background:transparent;color:#747c86;padding:4px 2px;
+  display:flex;flex-direction:column;align-items:center;gap:2px
+}
+.navBtn span{font-size:17px;line-height:19px}
+.navBtn small{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:7px;font-weight:750
+}
+.navBtn.active{color:var(--blue2)}
+
+/* MODALS */
+.modal,.celebration{
+  position:fixed;inset:0;z-index:60;background:rgba(7,9,12,.86);
+  display:flex;align-items:flex-end;justify-content:center;
+  backdrop-filter:blur(10px)
+}
+.modalSheet{
+  width:min(100%,620px);max-height:92vh;overflow:auto;
+  background:#171b20;border:1px solid #353c45;border-radius:24px 24px 0 0;
+  padding:22px 20px calc(24px + env(safe-area-inset-bottom))
+}
+.modalTitle{font-size:24px;font-weight:900}
+.modalSub{
+  margin-top:5px;color:var(--muted);font-size:10px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.45
+}
+.celebration{align-items:center;padding:24px}
 .celebrationInner{
   width:min(100%,480px);border:1px solid #34404c;border-radius:24px;
   background:linear-gradient(180deg,#192027,#12161b);
@@ -232,15 +389,23 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 }
 .celebrationMsg{
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:13px;font-weight:800;color:#fff;margin-bottom:24px
+  font-size:13px;font-weight:850;margin-bottom:24px
 }
 .celebration button{
   appearance:none;border:0;border-radius:12px;background:var(--blue);
-  color:#fff;padding:13px 18px;font-weight:800;font-size:13px;width:100%
+  color:#fff;padding:13px 18px;font-weight:850;font-size:13px;width:100%
+}
+.toast{
+  position:fixed;left:20px;right:20px;bottom:calc(86px + env(safe-area-inset-bottom));
+  z-index:80;background:#252b32;border:1px solid #3b434d;border-radius:12px;
+  padding:12px;text-align:center;font-size:11px;font-weight:750;
+  box-shadow:0 12px 40px rgba(0,0,0,.35)
 }
 [hidden]{display:none!important}
+
 @media(max-width:390px){
   .container{padding:16px}.percent{font-size:42px}.missionDayNumber{font-size:34px}
-  .dayRingWrap,.dayRing{width:108px;height:108px}
-  .legacyValue{font-size:19px}.bufferValue{font-size:24px}
+  .dayRingWrap,.dayRing,.oilRingWrap,.oilRing{width:108px;height:108px}
+  .legacyValue{font-size:19px}.bufferValue{font-size:24px}.oilBig{font-size:37px}
+  .metricXL{font-size:23px}.statValue{font-size:17px}
 }

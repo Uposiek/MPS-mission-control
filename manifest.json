@@ -1,7 +1,7 @@
 {
   "name": "MPS Mission Control",
   "short_name": "MPS Control",
-  "description": "Live telemetry mission control for the Mazda 3 MPS rebuild countdown.",
+  "description": "Mazda 3 MPS mission, fuel, service and cost telemetry.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
