@@ -1,0 +1,60 @@
+﻿Lp.;Kategoria;Typ;Pozycja;Marka/spec;Kwota netto PLN;Status
+1;TIMING;PARTS;OEM timing kit (VVT, chain, tensioner, 2 guides);OEM;2200.00;WYCENA
+2;SEALS;PARTS;Valve cover gasket;Elring;95.00;WYCENA
+3;SEALS;PARTS;Crankshaft seal;Elring;38.00;WYCENA
+4;SEALS;PARTS;VVT seal;OEM;120.00;WYCENA
+5;ENGINE;PARTS;Crank pulley bolt;OEM;58.00;WYCENA
+6;FLUIDS;PARTS;Valvoline SynPower 5W40 — final oil;Valvoline;260.00;WYCENA
+7;FLUIDS;PARTS;Oil filter x3;;100.00;WYCENA
+8;FLUIDS;PARTS;Gearbox oil;OEM;270.00;WYCENA
+9;MATERIALS;PARTS;Cleaning materials;;200.00;WYCENA
+10;FLUIDS;PARTS;Coolant;;90.00;WYCENA
+11;MACHINING;PARTS;Cylinder head rebuild;;1500.00;WYCENA
+12;MACHINING;PARTS;Block sleeving;;4400.00;WYCENA
+13;MACHINING;PARTS;Piston machining for forged rods;;450.00;WYCENA
+14;ENGINE;PARTS;Forged connecting rods;Manley;2900.00;WYCENA
+15;ENGINE;PARTS;Piston rings;Rikken;550.00;WYCENA
+16;ENGINE;PARTS;Cylinder head bolts;OEM;450.00;WYCENA
+17;MACHINING;PARTS;Clutch regeneration;;1800.00;WYCENA
+18;ENGINE;PARTS;Crankshaft support bolts;OEM;350.00;WYCENA
+19;ENGINE;PARTS;Oil pump;OEM;950.00;WYCENA
+20;ENGINE;PARTS;Oil pickup;OEM;350.00;WYCENA
+21;ENGINE;PARTS;ACL Race main bearings;ACL Race;480.00;WYCENA
+22;SEALS;PARTS;Cylinder head gasket;OEM;280.00;WYCENA
+23;SEALS;PARTS;Rear crankshaft seal — gearbox side;Elring;145.00;WYCENA
+24;FLUIDS;PARTS;First-start oil 10W40;;130.00;WYCENA
+25;FLUIDS;PARTS;Break-in oil;;160.00;WYCENA
+26;OTHER;PARTS;A/C recharge;;300.00;WYCENA
+27;SEALS;PARTS;Exhaust manifold gasket;;240.00;WYCENA
+28;FLUIDS;PARTS;Power steering fluid;;90.00;WYCENA
+29;SEALS;PARTS;Oil filter housing gasket;Elring;45.00;WYCENA
+30;ENGINE;PARTS;Balance delete kit;;550.00;WYCENA
+31;ENGINE;PARTS;ACL Race rod bearings;ACL Race;335.00;WYCENA
+32;FUEL;PARTS;Injector regeneration;;1450.00;WYCENA
+33;FUEL;PARTS;D4D injector washers;;120.00;WYCENA
+34;SEALS;PARTS;Breather plate gasket;OEM;90.00;WYCENA
+35;SEALS;PARTS;PCV valve gasket;OEM;55.00;WYCENA
+36;SEALS;PARTS;Intake manifold gasket;;80.00;WYCENA
+37;COOLING;PARTS;Thermostat;;140.00;WYCENA
+38;ENGINE;PARTS;Oil pump drive;OEM;480.00;WYCENA
+39;COOLING;PARTS;Water pump;Febi;220.00;WYCENA
+40;SEALS;PARTS;Coolant rail gasket;OEM;75.00;WYCENA
+41;FUEL;PARTS;HPFP pump gasket;OEM;140.00;WYCENA
+42;EXHAUST;PARTS;Long downpipe;"3""";1500.00;WYCENA
+43;FUEL;PARTS;HPFP internals;;1800.00;WYCENA
+44;INTAKE;PARTS;"3"" intake";CorkSport;1900.00;WYCENA
+45;TUNING;PARTS;DISI tuning;DISI Tune;2000.00;WYCENA
+46;TURBO;PARTS;Turbocharger;BNR S2;5000.00;WYCENA
+47;TURBO;PARTS;EBCS;;250.00;WYCENA
+48;MONITORING;PARTS;52 mm oil temperature gauge;;309.00;WYCENA
+49;MONITORING;PARTS;Sensor adapter;;80.00;WYCENA
+50;MATERIALS;PARTS;Break-in fuel;;1000.00;WYCENA
+51;LABOR;LABOR;Engine removal, teardown, assembly and installation;;8000.00;WYCENA
+52;LABOR;LABOR;Oil temperature gauge installation;;400.00;WYCENA
+53;LABOR;LABOR;Wheel alignment;;150.00;WYCENA
+
+;;;CZĘŚCI + OBRÓBKA;;36575.00;
+;;;ROBOCIZNA;;8550.00;
+;;;RAZEM NETTO;;45125.00;
+;;;ZALICZKA;;20000.00;
+;;;POZOSTAŁO PO ZALICZCE;;25125.00;

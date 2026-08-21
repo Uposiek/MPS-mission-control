@@ -9,14 +9,14 @@
   <meta name="apple-mobile-web-app-title" content="MPS Control">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="style-v61.css">
+  <link rel="stylesheet" href="style-v62.css">
   <title>MPS Mission Control</title>
 </head>
 <body data-app-mode="PROD">
 
 <header class="header">
-  <div class="headerTitle">Odbiór Mazdy</div>
-  <div class="headerVersion">MPS OPERATING SYSTEM // PWA v6.1 // LIVE</div>
+  <img class="mpsBadgeLogo" src="mps-badge.png" alt="MPS">
+  <div class="headerVersion">MPS OPERATING SYSTEM // PWA v6.2 // LIVE</div>
 </header>
 
 <main class="container">
@@ -329,6 +329,63 @@
       <div id="tyreList" class="dataList emptyState">BRAK DANYCH</div>
     </div>
 
+    <div class="fullCard buildSheetCard">
+      <div class="sectionHead">
+        <div class="label noMargin">2026 REBUILD // BUILD SHEET</div>
+        <div class="tinyBadge" id="buildSheetBadge">53 ITEMS</div>
+      </div>
+
+      <div class="buildSheetSub">WORKSHOP LIST // NET VALUES</div>
+
+      <div class="buildTotals">
+        <div><span>PARTS + MACHINING</span><b id="buildPartsTotal">36,575 PLN</b></div>
+        <div><span>LABOR</span><b id="buildLaborTotal">8,550 PLN</b></div>
+        <div class="buildTotalMain"><span>TOTAL NET</span><b id="buildTotalNet">45,125 PLN</b></div>
+        <div><span>DEPOSIT</span><b id="buildDeposit">20,000 PLN</b></div>
+        <div><span>BALANCE AFTER DEPOSIT</span><b id="buildBalance">25,125 PLN</b></div>
+      </div>
+
+      <div class="buildToolbar">
+        <select id="buildCategoryFilter">
+          <option value="all">ALL CATEGORIES</option>
+          <option value="TIMING">TIMING</option>
+          <option value="ENGINE">ENGINE</option>
+          <option value="MACHINING">MACHINING / REGENERATION</option>
+          <option value="SEALS">SEALS / GASKETS</option>
+          <option value="FLUIDS">FLUIDS</option>
+          <option value="MATERIALS">MATERIALS</option>
+          <option value="FUEL">FUEL</option>
+          <option value="COOLING">COOLING</option>
+          <option value="TURBO">TURBO</option>
+          <option value="INTAKE">INTAKE</option>
+          <option value="EXHAUST">EXHAUST</option>
+          <option value="TUNING">TUNING</option>
+          <option value="MONITORING">MONITORING</option>
+          <option value="LABOR">LABOR</option>
+          <option value="OTHER">OTHER</option>
+        </select>
+        <select id="buildStatusFilter">
+          <option value="all">ALL STATUS</option>
+          <option value="ESTIMATE">ESTIMATE</option>
+          <option value="CONFIRMED">CONFIRMED</option>
+          <option value="INSTALLED">INSTALLED</option>
+          <option value="REMOVED">REMOVED</option>
+        </select>
+      </div>
+
+      <input class="searchInput" id="buildSearch" placeholder="Search rebuild: BNR, ACL, OEM, oil pump...">
+
+      <div class="grid two noBottom">
+        <button class="secondaryButton compactButton" id="toggleBuildSheetBtn">SHOW BUILD SHEET</button>
+        <button class="secondaryButton compactButton" id="exportBuildSheetBtn">EXPORT CSV</button>
+      </div>
+
+      <button class="secondaryButton compactButton" id="markBuildInstalledBtn">MARK ALL AS INSTALLED</button>
+      <button class="secondaryButton compactButton" data-open-modal="buildItemModal">＋ ADD BUILD ITEM</button>
+
+      <div id="buildSheetList" class="dataList buildSheetList" hidden></div>
+    </div>
+
     <div class="fullCard">
       <div class="sectionHead">
         <div class="label noMargin">PARTS / SPECS / MODS</div>
@@ -494,7 +551,7 @@
   <button id="toastUndo" hidden>UNDO</button>
 </div>
 
-<script src="app-v61.js"></script>
-<script src="i18n-v61.js"></script>
+<script src="app-v62.js"></script>
+<script src="i18n-v62.js"></script>
 </body>
 </html>
