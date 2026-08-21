@@ -1,7 +1,7 @@
 {
   "name": "MPS Mission Control",
   "short_name": "MPS Control",
-  "description": "Live telemetry countdown for the Mazda 3 MPS rebuild mission.",
+  "description": "Live telemetry mission control for the Mazda 3 MPS rebuild countdown.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -9,7 +9,17 @@
   "background_color": "#101215",
   "theme_color": "#0878ee",
   "icons": [
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }

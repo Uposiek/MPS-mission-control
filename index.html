@@ -13,16 +13,29 @@
   <title>MPS Mission Control</title>
 </head>
 <body>
-  <header class="header">Odbiór Mazdy</header>
+  <header class="header">
+    <div class="headerTitle">Odbiór Mazdy</div>
+    <div class="headerVersion">MISSION CONTROL v2.0</div>
+  </header>
+
   <main class="container">
     <div class="sub">MPS REBUILD // LIVE TELEMETRY</div>
     <div class="status" id="status">LOADING...</div>
+
     <div class="percent" id="percent">0,000000%</div>
-    <div class="progressOuter"><div class="progressInner" id="progress"></div></div>
+    <div class="progressOuter">
+      <div class="progressInner" id="progress"></div>
+    </div>
 
     <section class="grid">
-      <div class="card"><div class="label">ELAPSED</div><div class="value" id="elapsed"></div></div>
-      <div class="card"><div class="label">REMAINING</div><div class="value" id="remaining"></div></div>
+      <div class="card">
+        <div class="label">ELAPSED</div>
+        <div class="value" id="elapsed"></div>
+      </div>
+      <div class="card">
+        <div class="label">REMAINING</div>
+        <div class="value" id="remaining"></div>
+      </div>
     </section>
 
     <section class="missionDayCard">
@@ -30,11 +43,11 @@
       <div class="missionDayLayout">
         <div class="missionDayLeft">
           <div class="missionDayNumber" id="day">1 / 23</div>
-          <div class="dayDate" id="dayDate">20.08.2026</div>
-          <div class="dayClock" id="dayClock">00:00:00 / 24:00:00</div>
+          <div class="dayDate" id="dayDate"></div>
+          <div class="dayClock" id="dayClock"></div>
         </div>
         <div class="dayRingWrap">
-          <svg class="dayRing" viewBox="0 0 120 120" aria-label="Daily progress">
+          <svg class="dayRing" viewBox="0 0 120 120">
             <circle class="dayRingBg" cx="60" cy="60" r="46"></circle>
             <circle id="dayRingFg" class="dayRingFg" cx="60" cy="60" r="46"></circle>
           </svg>
@@ -46,15 +59,100 @@
       </div>
     </section>
 
-    <section class="fullCard"><div class="label">CURRENT OBJECTIVE</div><div class="valueSmall blue" id="objective"></div></section>
-    <section class="fullCard"><div class="label">PHASE PROGRESS</div><div class="value" id="phaseProgress"></div></section>
-    <section class="fullCard"><div class="label">NEXT PHASE</div><div class="valueSmall" id="nextPhase"></div></section>
-    <section class="fullCard" id="breakInCard" hidden><div class="label">EST. BREAK-IN</div><div class="value green" id="breakIn"></div></section>
-    <section class="fullCard"><div class="label">NEXT MILESTONE</div><div class="value" id="milestone"></div></section>
-    <section class="fullCard"><div class="system" id="system">&gt; ALL SYSTEMS NOMINAL</div></section>
+    <section class="fullCard legacyCard">
+      <div class="sectionHead">
+        <div class="label noMargin">LEGACY COUNTER</div>
+        <div class="tinyBadge">SINCE 04.04</div>
+      </div>
+      <div class="legacyValue" id="legacyCounter"></div>
+      <div class="legacySub">TOTAL TIME WITHOUT MPS</div>
+    </section>
 
-    <footer class="footer">LIVE UPDATE // 100 ms<br>MPS MISSION CONTROL // PWA v1.0</footer>
+    <section class="fullCard">
+      <div class="label">CURRENT OBJECTIVE</div>
+      <div class="valueSmall blue" id="objective"></div>
+    </section>
+
+    <section class="fullCard">
+      <div class="sectionHead">
+        <div class="label noMargin">PHASE PROGRESS</div>
+        <div class="phasePct" id="phaseProgress">0,0000%</div>
+      </div>
+      <div class="miniProgressOuter">
+        <div class="miniProgressInner" id="phaseBar"></div>
+      </div>
+    </section>
+
+    <section class="fullCard">
+      <div class="label">PHASE MAP</div>
+      <div class="phaseMap" id="phaseMap"></div>
+    </section>
+
+    <section class="fullCard scheduleCard">
+      <div class="sectionHead">
+        <div class="label noMargin">SCHEDULE BUFFER</div>
+        <div class="tinyBadge" id="bufferBadge">TARGET 12.09</div>
+      </div>
+      <div class="bufferValue" id="bufferValue"></div>
+      <div class="bufferSub" id="bufferSub"></div>
+
+      <div class="etaGrid">
+        <div>
+          <div class="miniLabel">EARLIEST READY</div>
+          <div class="miniValue">05.09.2026</div>
+        </div>
+        <div class="right">
+          <div class="miniLabel">TARGET PICKUP</div>
+          <div class="miniValue">12.09.2026</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fullCard">
+      <div class="label">NEXT PHASE</div>
+      <div class="valueSmall" id="nextPhase"></div>
+    </section>
+
+    <section class="fullCard" id="breakInCard" hidden>
+      <div class="label">EST. BREAK-IN // TIMELINE</div>
+      <div class="sectionHead">
+        <div class="value green" id="breakIn"></div>
+        <div class="phasePct" id="breakInPct"></div>
+      </div>
+      <div class="miniProgressOuter">
+        <div class="miniProgressInner" id="breakInBar"></div>
+      </div>
+    </section>
+
+    <section class="fullCard">
+      <div class="label">NEXT MILESTONE</div>
+      <div class="value" id="milestone"></div>
+    </section>
+
+    <section class="fullCard">
+      <div class="label">MISSION LOG</div>
+      <div class="missionLog" id="missionLog"></div>
+    </section>
+
+    <section class="fullCard">
+      <div class="system" id="system">&gt; ALL SYSTEMS NOMINAL</div>
+    </section>
+
+    <footer class="footer">
+      LIVE UPDATE // 100 ms<br>
+      MPS MISSION CONTROL // PWA v2.0
+    </footer>
   </main>
+
+  <div class="celebration" id="celebration" hidden>
+    <div class="celebrationInner">
+      <div class="celebrationKicker">MILESTONE REACHED</div>
+      <div class="celebrationPct" id="celebrationPct">25%</div>
+      <div class="celebrationMsg" id="celebrationMsg">QUARTER MISSION COMPLETE</div>
+      <button id="celebrationClose">ACKNOWLEDGE</button>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>

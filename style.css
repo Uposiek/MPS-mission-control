@@ -1,13 +1,246 @@
 *{box-sizing:border-box}
-:root{color-scheme:dark;--blue:#0878ee;--green:#39d353;--green2:#4be56a;--bg:#101215;--bg2:#181b20;--card:#20242a;--border:#30353c;--muted:#858b94;--text:#fff}
-html,body{margin:0;min-height:100%;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif}
+:root{
+  color-scheme:dark;
+  --blue:#0878ee;
+  --blue2:#4ba3ff;
+  --green:#39d353;
+  --green2:#4be56a;
+  --orange:#ff9f35;
+  --red:#ff453a;
+  --bg:#101215;
+  --bg2:#181b20;
+  --card:#20242a;
+  --border:#30353c;
+  --muted:#858b94;
+  --muted2:#686e77;
+  --text:#ffffff;
+}
+html,body{
+  margin:0;min-height:100%;
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+}
 body{padding-bottom:env(safe-area-inset-bottom)}
-.header{background:var(--blue);padding:calc(18px + env(safe-area-inset-top)) 20px 18px;text-align:center;font-size:25px;font-weight:750;position:sticky;top:0;z-index:5}
-.container{padding:20px;max-width:760px;margin:0 auto}.sub{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:#8d929b;letter-spacing:1px;margin-bottom:8px}.status{font-size:16px;font-weight:700;margin-bottom:20px}.percent{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:47px;font-weight:800;color:var(--green);letter-spacing:-2px;margin-bottom:10px}
-.progressOuter{width:100%;height:26px;background:#30343a;border-radius:13px;overflow:hidden;margin-bottom:22px}.progressInner{height:100%;width:0;background:linear-gradient(90deg,#25b943,var(--green2));border-radius:13px;transition:width .1s linear}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.card,.fullCard,.missionDayCard{background:var(--card);border:1px solid var(--border);border-radius:13px}.card{padding:13px;min-width:0}.fullCard{padding:13px;margin-bottom:10px}
-.label{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:var(--muted);margin-bottom:6px;letter-spacing:1px}.value{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:16px;font-weight:700;white-space:nowrap}.valueSmall{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;font-weight:700;line-height:1.35}.blue{color:#4ba3ff}.green{color:var(--green)}
-.missionDayCard{padding:15px 18px;margin-bottom:10px}.missionDayLayout{display:flex;align-items:center;justify-content:space-between;gap:20px}.missionDayLeft{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0}.missionDayNumber{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:38px;font-weight:800;margin:2px 0 9px;white-space:nowrap}.dayDate{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.4px;margin-bottom:5px}.dayClock{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;font-weight:700;color:#4ba3ff;white-space:nowrap}
-.dayRingWrap{position:relative;width:118px;height:118px;flex:0 0 118px}.dayRing{width:118px;height:118px;transform:rotate(-90deg);overflow:visible}.dayRingBg{fill:none;stroke:#343941;stroke-width:9}.dayRingFg{fill:none;stroke:var(--green);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset .1s linear}.dayRingCenter{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.dayRingValue{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;font-weight:800;letter-spacing:-.5px}.dayRingSub{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:8px;color:var(--muted);margin-top:3px;letter-spacing:1px}
-.system{color:#4ba3ff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;font-weight:700}.footer{text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:#686e77;padding:15px 0 25px}[hidden]{display:none!important}
-@media(max-width:390px){.container{padding:16px}.percent{font-size:42px}.missionDayNumber{font-size:34px}.dayRingWrap,.dayRing{width:108px;height:108px}}
+.header{
+  background:var(--blue);
+  padding:calc(16px + env(safe-area-inset-top)) 20px 14px;
+  text-align:center;
+  position:sticky;top:0;z-index:5;
+}
+.headerTitle{font-size:25px;font-weight:750}
+.headerVersion{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:8px;letter-spacing:1.4px;opacity:.72;margin-top:3px;
+}
+.container{padding:20px;max-width:760px;margin:0 auto}
+.sub{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;color:#8d929b;letter-spacing:1px;margin-bottom:8px
+}
+.status{font-size:16px;font-weight:700;margin-bottom:20px}
+.percent{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:47px;font-weight:800;color:var(--green);
+  letter-spacing:-2px;margin-bottom:10px
+}
+.progressOuter{
+  width:100%;height:26px;background:#30343a;border-radius:13px;
+  overflow:hidden;margin-bottom:22px
+}
+.progressInner{
+  height:100%;width:0;
+  background:linear-gradient(90deg,#25b943,var(--green2));
+  border-radius:13px;transition:width .1s linear
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.card,.fullCard,.missionDayCard{
+  background:var(--card);border:1px solid var(--border);border-radius:13px
+}
+.card{padding:13px;min-width:0}
+.fullCard{padding:13px;margin-bottom:10px}
+.label{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10px;color:var(--muted);margin-bottom:6px;letter-spacing:1px
+}
+.noMargin{margin-bottom:0}
+.value{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:16px;font-weight:700;white-space:nowrap
+}
+.valueSmall{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:13px;font-weight:700;line-height:1.35
+}
+.blue{color:var(--blue2)}.green{color:var(--green)}.red{color:var(--red)}
+.sectionHead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tinyBadge{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:8px;color:var(--muted);border:1px solid #3b4149;border-radius:999px;
+  padding:4px 7px;white-space:nowrap
+}
+.phasePct{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:13px;font-weight:800;color:var(--green)
+}
+.missionDayCard{padding:15px 18px;margin-bottom:10px}
+.missionDayLayout{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.missionDayLeft{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.missionDayNumber{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:38px;font-weight:800;margin:2px 0 9px;white-space:nowrap
+}
+.dayDate{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.4px;margin-bottom:5px
+}
+.dayClock{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:13px;font-weight:700;color:var(--blue2);white-space:nowrap
+}
+.dayRingWrap{position:relative;width:118px;height:118px;flex:0 0 118px}
+.dayRing{width:118px;height:118px;transform:rotate(-90deg);overflow:visible}
+.dayRingBg{fill:none;stroke:#343941;stroke-width:9}
+.dayRingFg{
+  fill:none;stroke:var(--green);stroke-width:9;stroke-linecap:round;
+  transition:stroke-dashoffset .1s linear
+}
+.dayRingCenter{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center
+}
+.dayRingValue{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:14px;font-weight:800;letter-spacing:-.5px
+}
+.dayRingSub{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:8px;color:var(--muted);margin-top:3px;letter-spacing:1px
+}
+.legacyCard{border-color:#37404a}
+.legacyValue{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:22px;font-weight:800;color:#fff;margin-top:9px
+}
+.legacySub{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:8px;color:var(--muted);margin-top:4px;letter-spacing:.8px
+}
+.miniProgressOuter{
+  width:100%;height:9px;background:#30343a;border-radius:999px;
+  overflow:hidden;margin-top:10px
+}
+.miniProgressInner{
+  height:100%;width:0;background:var(--green);
+  border-radius:999px;transition:width .1s linear
+}
+.phaseMap{
+  display:flex;align-items:stretch;gap:8px;overflow-x:auto;
+  padding:4px 1px 4px;scrollbar-width:none
+}
+.phaseMap::-webkit-scrollbar{display:none}
+.phaseNode{
+  min-width:86px;border:1px solid #343a43;border-radius:10px;
+  padding:10px 8px;background:#1a1e23;text-align:center;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace
+}
+.phaseNode .ico{font-size:18px;margin-bottom:5px}
+.phaseNode .name{font-size:8px;color:#777f89;line-height:1.25}
+.phaseNode.done{border-color:#295f36;background:#17241a}
+.phaseNode.done .name{color:#67c878}
+.phaseNode.active{border-color:var(--green);box-shadow:0 0 0 1px rgba(57,211,83,.18) inset}
+.phaseNode.active .name{color:#fff;font-weight:800}
+.phaseNode.future{opacity:.55}
+.scheduleCard{border-color:#37404a}
+.bufferValue{
+  margin-top:8px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:27px;font-weight:900;color:var(--green)
+}
+.bufferValue.warning{color:var(--orange)}
+.bufferValue.danger{color:var(--red)}
+.bufferSub{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:9px;color:var(--muted);margin-top:3px
+}
+.etaGrid{
+  margin-top:13px;padding-top:11px;border-top:1px solid #323840;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px
+}
+.miniLabel{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:7px;color:var(--muted);letter-spacing:.8px
+}
+.miniValue{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10px;font-weight:700;margin-top:3px
+}
+.right{text-align:right}
+.missionLog{position:relative;margin-top:3px}
+.logEntry{
+  display:grid;grid-template-columns:64px 18px 1fr;gap:7px;align-items:start;
+  padding:7px 0
+}
+.logDate{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:9px;color:var(--muted);padding-top:1px
+}
+.logDotWrap{position:relative;display:flex;justify-content:center;height:100%}
+.logDot{
+  width:8px;height:8px;border-radius:50%;background:#444b54;margin-top:2px;z-index:2
+}
+.logLine{
+  position:absolute;top:10px;bottom:-12px;width:1px;background:#353b43
+}
+.logEntry:last-child .logLine{display:none}
+.logEntry.actual .logDot{background:var(--green)}
+.logEntry.planned .logDot{background:var(--blue2)}
+.logEntry.future{opacity:.62}
+.logText{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10px;font-weight:700;line-height:1.35
+}
+.logTag{
+  display:inline-block;font-size:7px;color:var(--muted);border:1px solid #3a4048;
+  border-radius:999px;padding:2px 5px;margin-left:5px;vertical-align:1px
+}
+.system{
+  color:var(--blue2);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12px;font-weight:700
+}
+.footer{
+  text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10px;color:var(--muted2);padding:15px 0 25px
+}
+.celebration{
+  position:fixed;inset:0;z-index:50;background:rgba(7,9,12,.94);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  backdrop-filter:blur(12px)
+}
+.celebrationInner{
+  width:min(100%,480px);border:1px solid #34404c;border-radius:24px;
+  background:linear-gradient(180deg,#192027,#12161b);
+  padding:32px 24px;text-align:center;box-shadow:0 30px 100px rgba(0,0,0,.5)
+}
+.celebrationKicker{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10px;color:var(--muted);letter-spacing:1.6px
+}
+.celebrationPct{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:62px;font-weight:900;color:var(--green);margin:14px 0 6px
+}
+.celebrationMsg{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:13px;font-weight:800;color:#fff;margin-bottom:24px
+}
+.celebration button{
+  appearance:none;border:0;border-radius:12px;background:var(--blue);
+  color:#fff;padding:13px 18px;font-weight:800;font-size:13px;width:100%
+}
+[hidden]{display:none!important}
+@media(max-width:390px){
+  .container{padding:16px}.percent{font-size:42px}.missionDayNumber{font-size:34px}
+  .dayRingWrap,.dayRing{width:108px;height:108px}
+  .legacyValue{font-size:19px}.bufferValue{font-size:24px}
+}
