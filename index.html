@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#0878ee">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MPS Control">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <title>MPS Mission Control</title>
+</head>
+<body>
+  <header class="header">Odbiór Mazdy</header>
+  <main class="container">
+    <div class="sub">MPS REBUILD // LIVE TELEMETRY</div>
+    <div class="status" id="status">LOADING...</div>
+    <div class="percent" id="percent">0,000000%</div>
+    <div class="progressOuter"><div class="progressInner" id="progress"></div></div>
+
+    <section class="grid">
+      <div class="card"><div class="label">ELAPSED</div><div class="value" id="elapsed"></div></div>
+      <div class="card"><div class="label">REMAINING</div><div class="value" id="remaining"></div></div>
+    </section>
+
+    <section class="missionDayCard">
+      <div class="label">MISSION DAY</div>
+      <div class="missionDayLayout">
+        <div class="missionDayLeft">
+          <div class="missionDayNumber" id="day">1 / 23</div>
+          <div class="dayDate" id="dayDate">20.08.2026</div>
+          <div class="dayClock" id="dayClock">00:00:00 / 24:00:00</div>
+        </div>
+        <div class="dayRingWrap">
+          <svg class="dayRing" viewBox="0 0 120 120" aria-label="Daily progress">
+            <circle class="dayRingBg" cx="60" cy="60" r="46"></circle>
+            <circle id="dayRingFg" class="dayRingFg" cx="60" cy="60" r="46"></circle>
+          </svg>
+          <div class="dayRingCenter">
+            <div id="dayProgressValue" class="dayRingValue">0,0000%</div>
+            <div class="dayRingSub">TODAY</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fullCard"><div class="label">CURRENT OBJECTIVE</div><div class="valueSmall blue" id="objective"></div></section>
+    <section class="fullCard"><div class="label">PHASE PROGRESS</div><div class="value" id="phaseProgress"></div></section>
+    <section class="fullCard"><div class="label">NEXT PHASE</div><div class="valueSmall" id="nextPhase"></div></section>
+    <section class="fullCard" id="breakInCard" hidden><div class="label">EST. BREAK-IN</div><div class="value green" id="breakIn"></div></section>
+    <section class="fullCard"><div class="label">NEXT MILESTONE</div><div class="value" id="milestone"></div></section>
+    <section class="fullCard"><div class="system" id="system">&gt; ALL SYSTEMS NOMINAL</div></section>
+
+    <footer class="footer">LIVE UPDATE // 100 ms<br>MPS MISSION CONTROL // PWA v1.0</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
